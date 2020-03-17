@@ -1,0 +1,24 @@
+<import src="post-item/post-item-template.wxml" />
+<view>
+  <!-- vertical 纵向轮播 -->
+  <swiper indicator-dots autoplay interval='4000' catchtap="onSwiperTap">
+    <swiper-item>
+      <image src='../img/vr.png' data-postId="0"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src='../img/iqiyi.png' data-postId="1"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src='../img/wx.png' data-postId="2"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- wx:for-item="item" 省略时会默认为item -->
+  <!-- wx:for-index="idx" 省略时会默认为idx(0、1 ...) -->
+  <block wx:for="{{posts_key}}" wx:key="idx">
+  <!-- 自定义属性data- -->
+    <view catchtap="onPostTap" data-postId="{{item.postId}}" data-post-name="name">
+      <template is="postItem" data="{{...item}}"></template>
+    </view>
+  </block>
+</view>
